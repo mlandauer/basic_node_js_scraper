@@ -34,7 +34,7 @@ function readRows(db) {
 function fetchPage(url, callback) {
 	// Use request to read in pages.
 	var options = {
-		ca: fs.readFileSync("/etc/ssl/certs/ca-certificates.crt")
+		cert: fs.readFileSync("/etc/ssl/certs/ca-certificates.crt")
 	};
 	request(url, options, function (error, response, body) {
 		if (error) {
