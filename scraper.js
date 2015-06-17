@@ -1,8 +1,8 @@
 // This is a template for a Node.js scraper on morph.io (https://morph.io)
 
-//var https = require("https");
+var https = require("https");
 var fs = require("fs");
-//https.globalAgent.options.ca = fs.readFileSync("/etc/ssl/certs/ca-certificates.crt");
+https.globalAgent.options.ca = fs.readFileSync("/usr/local/share/ca-certificates/mitmproxy-ca-cert.crt");
 
 var cheerio = require("cheerio");
 var request = require("request");
@@ -33,11 +33,7 @@ function readRows(db) {
 
 function fetchPage(url, callback) {
 	// Use request to read in pages.
-	var options = {
-		url: url,
-		ca: fs.readFileSync("/usr/local/share/ca-certificates/mitmproxy-ca-cert.crt")
-	};
-	request(options, function (error, response, body) {
+	request(url, function (error, response, body) {
 		if (error) {
 			console.log("Error requesting page: " + error);
 			return;
