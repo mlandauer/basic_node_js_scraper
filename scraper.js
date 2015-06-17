@@ -1,5 +1,9 @@
 // This is a template for a Node.js scraper on morph.io (https://morph.io)
 
+var https = require("https");
+var fs = require("fs");
+https.globalAgent.options.ca = fs.readFileSync("/etc/ssl/certs/ca-certificates.crt");
+
 var cheerio = require("cheerio");
 var request = require("request");
 var sqlite3 = require("sqlite3").verbose();
