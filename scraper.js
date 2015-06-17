@@ -35,7 +35,7 @@ function fetchPage(url, callback) {
 	// Use request to read in pages.
 	var options = {
 		url: url,
-		cert: fs.readFileSync("/etc/ssl/certs/ca-certificates.crt")
+		ca: fs.readFileSync("/etc/ssl/certs/ca-certificates.crt")
 	};
 	request(options, function (error, response, body) {
 		if (error) {
